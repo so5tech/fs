@@ -8,8 +8,9 @@ const express_1 = require("express");
 const post_1 = __importDefault(require("./post"));
 const get_1 = __importDefault(require("./get"));
 const softDelete_1 = __importDefault(require("./softDelete"));
+const authenticator_1 = __importDefault(require("../../../middlewares/authenticator"));
 exports.User = (0, express_1.Router)();
 exports.User.post('/', post_1.default);
-exports.User.get('/', get_1.default);
-exports.User.post('/:type/:id', softDelete_1.default);
+exports.User.get('/', (0, authenticator_1.default)(), get_1.default);
+exports.User.post('/:type/:id', (0, authenticator_1.default)(), softDelete_1.default);
 //# sourceMappingURL=index.js.map

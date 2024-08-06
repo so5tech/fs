@@ -7,6 +7,7 @@ const errorcode_1 = require("../type/errorcode");
 const verifyjwt_1 = __importDefault(require("../helpers/authentication/verifyjwt"));
 const userUpdate_1 = require("../service/statistics/userUpdate");
 const user_1 = __importDefault(require("../models/user"));
+const http_status_codes_1 = require("http-status-codes");
 const TokenAuth = () => {
     const Auth = async (req, res, next) => {
         const jsontoken = req.headers.authorization.split(" ")[1];
@@ -19,14 +20,19 @@ const TokenAuth = () => {
                 if (!admin)
                     throw new Error(errorcode_1.ErrorCode.ACCESS_DENIED);
                 let data = {
-                    email_id: req.admin.email,
+                    email: req.admin.email,
                     request: req
                 };
                 (0, userUpdate_1.userUpdate)(data);
                 next();
             }
             catch (err) {
-                res.sendErrorMessage(err.message);
+                // res.sendErrorMessage(err.message);
+                res.status(http_status_codes_1.StatusCodes.UNAUTHORIZED).json({
+                    success: false,
+                    status_code: http_status_codes_1.StatusCodes.UNAUTHORIZED,
+                    message: "Error at Auth",
+                });
             }
         }
     };

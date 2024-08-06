@@ -17,7 +17,7 @@ app.use(body_parser_1.default.json({ limit: '500mb' }));
 app.use(body_parser_1.default.urlencoded({ limit: '500mb', extended: true }));
 app.use((0, cors_1.default)());
 app.use('/bo/apis', apis_1.ApiRouter);
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

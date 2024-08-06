@@ -7,7 +7,6 @@ const user_1 = __importDefault(require("../../../models/user"));
 const http_status_codes_1 = require("http-status-codes");
 const GetController = async (req, res) => {
     try {
-        // const { email, password } = req.body
         const Users = await user_1.default.find({});
         res.status(http_status_codes_1.StatusCodes.OK).json({
             success: true,

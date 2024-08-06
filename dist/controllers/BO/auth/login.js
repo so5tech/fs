@@ -19,10 +19,10 @@ const LoginController = async (req, res) => {
             email: user.email,
             role: user.role,
         };
-        const token = (0, generatejwt_1.default)(bearerToken);
+        const token = await (0, generatejwt_1.default)(bearerToken);
         res.status(http_status_codes_1.StatusCodes.OK).json({
             success: true,
-            data: { 'btoken': bearerToken, "user": user },
+            data: { 'btoken': token, "user": user },
             status_code: http_status_codes_1.StatusCodes.OK
         });
     }
