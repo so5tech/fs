@@ -6,6 +6,7 @@ const secret:string = "1234";
 const generateJWT = (payload: any) => {
 	return new Promise((resolve, reject) => {
 		jwt.sign(payload, secret, {
+			
 			// expiresIn: Number(process.env.BEARER_TOKEN_VALIDITY)
             expiresIn: Number(604800)
 

@@ -25,10 +25,11 @@ const LoginController = async (
             email: user.email,
             role: user.role,
         }
-        const token = generateJWT(bearerToken);
+        const token = await generateJWT(bearerToken);
+        
         res.status(StatusCodes.OK).json({
             success: true,
-            data: {'btoken': bearerToken, "user": user},
+            data: {'btoken': token, "user": user},
             status_code: StatusCodes.OK
             
         });

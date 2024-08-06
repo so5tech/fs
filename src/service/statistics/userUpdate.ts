@@ -11,7 +11,7 @@ export const userUpdate = async (data) => {
             let date = new Date();
             let full_date = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2);
 
-            const statistic_result = await UsageStatistics.findOne({ email_id: data.email_id, data: new Date(full_date) });
+            const statistic_result = await UsageStatistics.findOne({ email_id: data.email_id, date: new Date(full_date) });
             if (statistic_result) {
                 let logs_data = statistic_result.logs
                 logs_data.push(log)

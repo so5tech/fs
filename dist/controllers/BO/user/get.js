@@ -9,10 +9,11 @@ const GetController = async (req, res) => {
     try {
         // const { email, password } = req.body
         const Users = await user_1.default.find({});
-        res.status(http_status_codes_1.StatusCodes.CREATED).json({
+        res.status(http_status_codes_1.StatusCodes.OK).json({
             success: true,
-            status_code: http_status_codes_1.StatusCodes.CREATED,
-            message: Users,
+            status_code: http_status_codes_1.StatusCodes.OK,
+            data: Users,
+            message: "All Users Data",
         });
     }
     catch (error) {

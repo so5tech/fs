@@ -9,6 +9,7 @@ const userSchema = new mongoose_1.default.Schema({
     email: { type: String },
     password: { type: String },
     role: { type: String },
+    is_delete: { type: Boolean, default: false }
 }, { timestamps: { createdAt: "created_on", updatedAt: "updated_on" } });
 const User = mongoose_1.default.model("User", userSchema);
 exports.default = User;

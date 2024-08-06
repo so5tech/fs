@@ -13,7 +13,6 @@ const GetController = async (
     res : ExtendedResponse    
 ): Promise<void> => {
     try {
-        // const { email, password } = req.body
         const Users = await User.find({});
         res.status(StatusCodes.OK).json({
             success: true,
