@@ -4,6 +4,7 @@ type UserDocument = mongoose.Document & {
     name: string;
     email: string;
     password: string;
+    type: string;
     role: string;
     is_delete: boolean;
 };
@@ -12,6 +13,7 @@ const userSchema = new mongoose.Schema({
     name: { type: String },
     email: { type: String },
     password: { type: String },
+    type: { type: String },
     role: { type: String },
     is_delete: { type: Boolean, default: false }
 }, { timestamps: { createdAt: "created_on", updatedAt: "updated_on" } });

@@ -1,5 +1,6 @@
 import { ExtendedRequest, ExtendedResponse } from "../../../type/types";
 import User from "../../../models/user";
+import inventory from "../../../models/inventory";
 
 import {
 	ReasonPhrases,
@@ -14,8 +15,8 @@ const PostController = async (
 ): Promise<void> => {
     try {
         // const { email, password } = req.body
-        const newUser = new User(req.body);
-        const savedUser = await newUser.save();
+        const inventory1 = new inventory(req.body.newData);
+        const savedUser = await inventory1.save();
         res.status(StatusCodes.CREATED).json({
             success: true,
             status_code: StatusCodes.CREATED,

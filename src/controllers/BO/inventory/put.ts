@@ -1,5 +1,5 @@
 import { ExtendedRequest, ExtendedResponse } from "../../../type/types";
-import User from "../../../models/user";
+import inventory from "../../../models/inventory";
 
 import {
 	ReasonPhrases,
@@ -8,22 +8,20 @@ import {
 	getStatusCode,
 } from 'http-status-codes';
 
-const PostController = async (
+const PutController = async (
     req : ExtendedRequest,
     res : ExtendedResponse    
 ): Promise<void> => {
     try {
-        // const { email, password } = req.body
-        const newUser = new User(req.body);
-        const savedUser = await newUser.save();
-        res.status(StatusCodes.CREATED).json({
+        const update_inv = await inventory.updateOne({_id: req.body._id} ,req.body);
+        res.status(StatusCodes.OK).json({
             success: true,
-            status_code: StatusCodes.CREATED,
-            message: `User created successfully ${savedUser}`,
+            status_code: StatusCodes.OK,
+            message: `inventory updated successfully ${update_inv}`,
         });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' })
     }
 }
 
-export default PostController;
+export default PutController;

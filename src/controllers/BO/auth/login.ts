@@ -23,6 +23,7 @@ const LoginController = async (
         const bearerToken = {
             _id: user._id,            
             email: user.email,
+            type: user?.type,
             role: user.role,
         }
         const token = await generateJWT(bearerToken);
