@@ -1,12 +1,16 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
-}
+    "compilerOptions": {
+        "module": "NodeNext",
+        "rootDir": "./src",
+        "moduleResolution": "NodeNext",
+        "target": "ES2020",
+        "sourceMap": true,
+        "outDir": "dist",        
+        "noUnusedLocals": false, 
+        "noUnusedParameters": false, 
+        "skipLibCheck": true, 
+        "strict": false 
 
+    },
+    "include": ["src/**/*"],
+}
